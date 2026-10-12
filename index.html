@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="card">
+
+    <!-- ===== Header ===== -->
+    <header class="card-header">
+      <h1>Student Registration Form</h1>
+      <p class="description">
+        Complete the form below to register as a student.
+        Fields marked with <span class="required-mark" aria-hidden="true">*</span> are required.
+      </p>
+    </header>
+
+    <!-- ===== Success message (hidden until every field is valid) ===== -->
+    <div
+      id="successMessage"
+      class="success-message"
+      role="status"
+      aria-live="polite"
+      hidden>
+    </div>
+
+    <!--
+      Custom data-* attributes used by script.js:
+        data-validation : which validation rule to apply to the field
+        data-required   : whether the field may be left empty
+        data-label      : field name used in error messages
+        data-min-length : minimum length for password / address
+        data-target     : which input a Show/Hide button controls
+    -->
+    <form id="registrationForm" novalidate>
+      <div class="form-grid">
+
+        <!-- Student ID -->
+        <div class="form-group">
+          <label for="studentId">
+            Student ID <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="text"
+            id="studentId"
+            name="studentId"
+            placeholder="e.g. 2024-00123"
+            autocomplete="off"
+            aria-describedby="studentIdError"
+            data-validation="studentId"
+            data-required="true"
+            data-label="Student ID">
+          <small class="error-message" id="studentIdError"></small>
+        </div>
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="fullName">
+            Full Name <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Juan Dela Cruz"
+            autocomplete="name"
+            aria-describedby="fullNameError"
+            data-validation="name"
+            data-required="true"
+            data-label="Full Name">
+          <small class="error-message" id="fullNameError"></small>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">
+            Email Address <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="name@example.com"
+            autocomplete="email"
+            aria-describedby="emailError"
+            data-validation="email"
+            data-required="true"
+            data-label="Email Address">
+          <small class="error-message" id="emailError"></small>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-group">
+          <label for="phone">
+            Phone Number <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="09XXXXXXXXX"
+            autocomplete="tel"
+            aria-describedby="phoneError"
+            data-validation="phone"
+            data-required="true"
+            data-label="Phone Number">
+          <small class="error-message" id="phoneError"></small>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-group">
+          <label for="dob">
+            Date of Birth <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="date"
+            id="dob"
+            name="dob"
+            aria-describedby="dobError"
+            data-validation="date"
+            data-required="true"
+            data-label="Date of Birth">
+          <small class="error-message" id="dobError"></small>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+          <fieldset
+            id="gender"
+            class="radio-group"
+            aria-describedby="genderError"
+            data-validation="radio"
+            data-required="true"
+            data-label="Gender">
+            <legend>
+              Gender <span class="required-mark" aria-hidden="true">*</span>
+            </legend>
+            <label class="inline-option">
+              <input type="radio" name="gender" value="Male"> Male
+            </label>
+            <label class="inline-option">
+              <input type="radio" name="gender" value="Female"> Female
+            </label>
+            <label class="inline-option">
+              <input type="radio" name="gender" value="Other"> Other
+            </label>
+          </fieldset>
+          <small class="error-message" id="genderError"></small>
+        </div>
+
+        <!-- Program -->
+        <div class="form-group">
+          <label for="program">
+            Program <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <select
+            id="program"
+            name="program"
+            aria-describedby="programError"
+            data-validation="select"
+            data-required="true"
+            data-label="Program">
+            <option value="">Select your program</option>
+            <option value="BSIT">BS Information Technology</option>
+            <option value="BSCS">BS Computer Science</option>
+            <option value="BSIS">BS Information Systems</option>
+            <option value="BSCpE">BS Computer Engineering</option>
+          </select>
+          <small class="error-message" id="programError"></small>
+        </div>
+
+        <!-- Year Level -->
+        <div class="form-group">
+          <label for="yearLevel">
+            Year Level <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <select
+            id="yearLevel"
+            name="yearLevel"
+            aria-describedby="yearLevelError"
+            data-validation="select"
+            data-required="true"
+            data-label="Year Level">
+            <option value="">Select your year level</option>
+            <option value="1">First Year</option>
+            <option value="2">Second Year</option>
+            <option value="3">Third Year</option>
+            <option value="4">Fourth Year</option>
+          </select>
+          <small class="error-message" id="yearLevelError"></small>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">
+            Password <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <div class="password-field">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="At least 8 characters"
+              autocomplete="new-password"
+              aria-describedby="passwordHint passwordError"
+              data-validation="password"
+              data-required="true"
+              data-label="Password"
+              data-min-length="8">
+          </div>
+          <button
+            type="button"
+            class="toggle-password"
+            data-target="password"
+            aria-controls="password"
+            aria-pressed="false">
+            Show Password
+          </button>
+          <small class="hint" id="passwordHint">
+            Use at least 8 characters with letters and numbers.
+          </small>
+          <small class="error-message" id="passwordError"></small>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirmPassword">
+            Confirm Password <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <div class="password-field">
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Re-enter your password"
+              autocomplete="new-password"
+              aria-describedby="confirmPasswordError"
+              data-validation="confirm"
+              data-required="true"
+              data-label="Confirm Password">
+          </div>
+          <button
+            type="button"
+            class="toggle-password"
+            data-target="confirmPassword"
+            aria-controls="confirmPassword"
+            aria-pressed="false">
+            Show Confirm Password
+          </button>
+          <small class="error-message" id="confirmPasswordError"></small>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group full-width">
+          <label for="address">
+            Address <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <textarea
+            id="address"
+            name="address"
+            rows="3"
+            placeholder="House No., Street, Barangay, Municipality, Province"
+            aria-describedby="addressError"
+            data-validation="text"
+            data-required="true"
+            data-label="Address"
+            data-min-length="10"></textarea>
+          <small class="error-message" id="addressError"></small>
+        </div>
+
+        <!-- Agreement -->
+        <div class="form-group full-width">
+          <div class="checkbox-row">
+            <input
+              type="checkbox"
+              id="agreement"
+              name="agreement"
+              aria-describedby="agreementError"
+              data-validation="checkbox"
+              data-required="true"
+              data-label="Agreement">
+            <label for="agreement">
+              I confirm that the information I provided is correct
+              and I agree to the registration terms.
+            </label>
+          </div>
+          <small class="error-message" id="agreementError"></small>
+        </div>
+
+      </div>
+
+      <!-- ===== Buttons ===== -->
+      <div class="button-row">
+        <button type="submit" class="btn btn-primary">Register Student</button>
+        <button type="reset" class="btn btn-secondary" id="resetButton">Reset Form</button>
+      </div>
+    </form>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

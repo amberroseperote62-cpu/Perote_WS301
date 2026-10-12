@@ -1,0 +1,321 @@
+/* =====================================================
+   Student Registration Form - Styles
+   Small palette: blue (main), gray (neutral),
+   red (errors), green (success)
+   ===================================================== */
+
+/* ---------- 1. Color palette ---------- */
+:root {
+  --blue:        #2f6fed;
+  --blue-dark:   #1f56c4;
+  --blue-soft:   #eef3fe;
+
+  --gray-page:   #f4f6f9;
+  --gray-line:   #d5dbe3;
+  --gray-text:   #6b7685;
+  --text:        #232b38;
+
+  --red:         #d93a3a;
+  --red-soft:    #fdf1f1;
+
+  --green:       #2e9e5b;
+  --green-soft:  #eef9f2;
+}
+
+/* ---------- 2. Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px 12px;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--gray-page);
+}
+
+/* ---------- 3. Card ---------- */
+.card {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 28px;
+  background: #ffffff;
+  border: 1px solid var(--gray-line);
+  border-top: 4px solid var(--blue);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(35, 43, 56, 0.06);
+}
+
+.card-header h1 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+  color: var(--blue-dark);
+}
+
+.description {
+  margin: 0 0 16px;
+  font-size: 0.85rem;
+  color: var(--gray-text);
+}
+
+.required-mark {
+  color: var(--red);
+}
+
+/* ---------- 4. Layout (2 columns on desktop) ---------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 18px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  margin-bottom: 8px;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* ---------- 5. Inputs ---------- */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--text);
+  background: #ffffff;
+  border: 1px solid var(--gray-line);
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #aab3bf;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.18);
+}
+
+textarea {
+  min-height: 56px;
+  resize: vertical;
+}
+
+/* ---------- 6. Error state (added/removed with classList) ---------- */
+input.error,
+select.error,
+textarea.error {
+  border-color: var(--red);
+  background: var(--red-soft);
+}
+
+input.error:focus,
+select.error:focus,
+textarea.error:focus {
+  box-shadow: 0 0 0 3px rgba(217, 58, 58, 0.18);
+}
+
+.radio-group.error,
+.checkbox-row.error {
+  border-color: var(--red);
+  background: var(--red-soft);
+}
+
+.error-message {
+  display: block;
+  min-height: 15px;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: var(--red);
+}
+
+.hint {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.72rem;
+  color: var(--gray-text);
+}
+
+/* ---------- 7. Radio group ---------- */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 16px;
+  margin: 0;
+  padding: 5px 10px 7px;
+  border: 1px solid var(--gray-line);
+  border-radius: 6px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.radio-group legend {
+  padding: 0 4px;
+  margin-bottom: 0;
+}
+
+.inline-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* ---------- 8. Agreement checkbox ---------- */
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 9px 10px;
+  border: 1px solid var(--gray-line);
+  border-radius: 6px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.checkbox-row input {
+  margin-top: 3px;
+}
+
+.checkbox-row label {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* ---------- 9. Show / Hide password ---------- */
+/* "show-password" is added/removed with classList.toggle() */
+.password-field.show-password input {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.toggle-password {
+  margin-top: 3px;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blue);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.toggle-password:hover {
+  color: var(--blue-dark);
+  text-decoration: underline;
+}
+
+.toggle-password:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ---------- 10. Buttons ---------- */
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 9px 22px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  box-shadow: 0 2px 8px rgba(35, 43, 56, 0.15);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:focus-visible {
+  outline: 3px solid rgba(47, 111, 237, 0.35);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background: var(--blue);
+}
+
+.btn-primary:hover {
+  background: var(--blue-dark);
+}
+
+.btn-secondary {
+  color: var(--text);
+  background: #ffffff;
+  border-color: var(--gray-line);
+}
+
+.btn-secondary:hover {
+  background: var(--gray-page);
+}
+
+/* ---------- 11. Success message ---------- */
+.success-message {
+  margin-bottom: 14px;
+  padding: 11px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1f6b3f;
+  background: var(--green-soft);
+  border: 1px solid var(--green);
+  border-radius: 6px;
+}
+
+.success-message[hidden] {
+  display: none;
+}
+
+/* ---------- 12. Mobile: single column ---------- */
+@media (max-width: 640px) {
+  .card {
+    padding: 18px 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-row .btn {
+    flex: 1;
+  }
+}
